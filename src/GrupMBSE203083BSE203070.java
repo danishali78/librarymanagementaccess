@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +87,16 @@ private JPasswordField passwordField;
                 loginGUI.setVisible(true);
             }
         });
+         Book book = new Book(23456,"truth","gener","1234");
+         User user = new User(203083,"ali","233344555");
+         BiookDoa obj = new Bookdaoimpl();
+         obj.returnbook(4523);
+         obj.addBook(book);
+         obj.issuebook(25342);
+         obj.getIssuedBooks();
+         Userrdoa obj1 = new userdoa();
+         obj1.getalluser();
+         obj1.adduser(user);
     }
 }
 
@@ -116,27 +120,35 @@ public Userrdoa userDAO;
         bt1.setBounds(220, 140, 100, 30);
         bt1.setBackground(Color.GRAY);
         JButton bt2 = new JButton("view issue book");
-         
+        
         bt2.setBounds(330, 140, 100, 30);
         bt2.setBackground(Color.GRAY);
          JButton bt3 = new JButton("issue book");
-          
+           bt3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openIssueBook();
+            }
+        });
+           
         bt3.setBounds(440, 140, 100, 30);
         bt3.setBackground(Color.GRAY);
-         JButton bt4 = new JButton("add user");
-          
+         JButton bt4 = new JButton("add user"); 
         bt4.setBounds(110, 200, 100, 30);
         bt4.setBackground(Color.GRAY);
         JButton bt5 = new JButton("add book");
-         
+           bt5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openaddBook();
+            }
+        });
         bt5.setBounds(220, 200, 100, 30);
         bt5.setBackground(Color.GRAY);
         JButton bt6 = new JButton("return book");
-         
+        
         bt6.setBounds(330, 200, 100, 30);
         bt6.setBackground(Color.GRAY);
+        
         JButton bt7 = new JButton("create/reset");
-          
         bt7.setBounds(440, 200, 100, 30);
         bt7.setBackground(Color.GRAY);
         setLayout(null);
@@ -151,8 +163,110 @@ public Userrdoa userDAO;
         add(bt7);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
- 
     }
+       private void openIssueBook()
+       {
+        // Close the admin page
+        dispose();
 
-    
+        // Open the next page
+        IssueBook nextPageGUI = new IssueBook();
+        nextPageGUI.setVisible(true);
+    }
+       
+        private void openaddBook()
+       {
+        // Close the admin page
+        dispose();
+
+        // Open the next page
+        addBook object = new  addBook();
+        object.setVisible(true);
+    }
+}  
+
+class IssueBook extends JFrame {
+   
+    public IssueBook()
+    {
+        setTitle("Next Page");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+         JLabel tf = new JLabel("please fill these form  ");
+        
+        JLabel BookID = new JLabel("Book ID");
+        BookID.setBounds(50, 30, 80, 25);
+        
+        JLabel Userid = new JLabel("User ID");
+        Userid.setBounds(50, 80, 80, 25);
+        
+        JLabel period = new JLabel("Period");
+        period.setBounds(50, 120, 80, 25);
+        
+        JTextField bookidfield = new JTextField();
+        bookidfield.setBounds(50, 50, 120, 25);
+        
+        JTextField userid = new JTextField();
+        userid.setBounds(50, 100, 120, 25);
+        
+        JTextField periodfield = new JTextField();
+        periodfield.setBounds(50, 150, 120, 25);
+        
+        JButton Button = new JButton("submit");
+        Button.setBounds(110, 200, 80, 25);
+        
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        add(BookID);
+        add(Userid);
+        add(period);
+        add(bookidfield);
+        add(userid);
+        add(periodfield);
+        add(Button);
+        add(panel);
+    }
+}
+
+ class addBook extends JFrame{
+     
+     public addBook()
+     {
+        setTitle("add book");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        JLabel tf = new JLabel("please fill these form  ");
+        
+        JLabel Bookname = new JLabel("Book Name");
+        Bookname.setBounds(50, 30, 80, 25);
+        
+        JLabel genre = new JLabel("Genre");
+        genre.setBounds(50, 80, 80, 25);
+        
+        JLabel price = new JLabel("Price");
+        price.setBounds(50, 120, 80, 25);
+        
+        JTextField bookname = new JTextField();
+        bookname.setBounds(50, 50, 120, 25);
+        
+        JTextField genrefield = new JTextField();
+        genrefield.setBounds(50, 100, 120, 25);
+        
+        JTextField pricefield = new JTextField();
+        pricefield.setBounds(50, 150, 120, 25);
+        
+        JButton Button = new JButton("submit");
+        Button.setBounds(110, 200, 80, 25);
+        
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        add(Bookname);
+        add(genre);
+        add(price);
+        add(bookname);
+        add(genrefield);
+        add(pricefield);
+        add(Button);
+        add(panel);
+     }
 }
