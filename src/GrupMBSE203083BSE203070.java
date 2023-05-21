@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +103,7 @@ private JPasswordField passwordField;
 
 class AdminFunctionPageGUI extends JFrame {
 private JList<String> bookList;
-    private DefaultListModel<String> listModel;
+private DefaultListModel<String> listModel;
 public BiookDoa bookDAO;
 public Userrdoa userDAO;
     public AdminFunctionPageGUI() {
@@ -112,6 +113,8 @@ public Userrdoa userDAO;
         
         setSize(600, 500);
         JButton bt = new JButton("View book");
+
+       
         
         bt.setBounds(110, 140, 100, 30);
         bt.setBackground(Color.GRAY);
@@ -132,7 +135,7 @@ public Userrdoa userDAO;
            
         bt3.setBounds(440, 140, 100, 30);
         bt3.setBackground(Color.GRAY);
-         JButton bt4 = new JButton("add user"); 
+        JButton bt4 = new JButton("add user"); 
         bt4.setBounds(110, 200, 100, 30);
         bt4.setBackground(Color.GRAY);
         JButton bt5 = new JButton("add book");
@@ -192,7 +195,7 @@ class IssueBook extends JFrame {
         setTitle("Next Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
-         JLabel tf = new JLabel("please fill these form  ");
+        JLabel tf = new JLabel("please fill these form  ");
         
         JLabel BookID = new JLabel("Book ID");
         BookID.setBounds(50, 30, 80, 25);
@@ -230,32 +233,39 @@ class IssueBook extends JFrame {
 
  class addBook extends JFrame{
      
-     public addBook()
+     public addBook(Book book)
      {
+         
         setTitle("add book");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
         JLabel tf = new JLabel("please fill these form  ");
         
-        JLabel Bookname = new JLabel("Book Name");
+       JLabel Bookname = new JLabel("Book name");
         Bookname.setBounds(50, 30, 80, 25);
         
-        JLabel genre = new JLabel("Genre");
+         JLabel Bookid = new JLabel("Book name");
+        Bookid.setBounds(50, 30, 80, 25);
+        
+       JLabel genre = new JLabel("Genre");
         genre.setBounds(50, 80, 80, 25);
         
-        JLabel price = new JLabel("Price");
+       JLabel price = new JLabel("Price");
         price.setBounds(50, 120, 80, 25);
-        
+                
         JTextField bookname = new JTextField();
         bookname.setBounds(50, 50, 120, 25);
         
+        JTextField bookid = new JTextField();
+        bookid.setBounds(50, 100, 120, 25);
+        
         JTextField genrefield = new JTextField();
-        genrefield.setBounds(50, 100, 120, 25);
+        genrefield.setBounds(50, 150, 120, 25);
         
         JTextField pricefield = new JTextField();
-        pricefield.setBounds(50, 150, 120, 25);
+        pricefield.setBounds(50, 200, 120, 25);
         
-        JButton Button = new JButton("submit");
+       JButton Button = new JButton("submit");
         Button.setBounds(110, 200, 80, 25);
         
         setLocationRelativeTo(null);
@@ -268,5 +278,8 @@ class IssueBook extends JFrame {
         add(pricefield);
         add(Button);
         add(panel);
+        addBook obj = new addBook(book);
      }
+
+    
 }
