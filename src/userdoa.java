@@ -7,16 +7,15 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.swing.*;
 public class userdoa implements Userrdoa {
 private Connection connection;
 
     public userdoa() {
+
         try {
             String url = "jdbc:mysql://localhost:3306/library";
             String username = "root";
             String password = "";
-            Class.forName("com.mysqlcj.jdbc.Driver")
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -44,11 +43,13 @@ public List<User> getalluser() {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+return users;
+}
 public void adduser(User user) {
         try {
-            String query = "INSERT INTO User (id,username,  password) VALUES (1, "11b", "11AA",)";
+            String query = "INSERT INTO User (id,username,  password) VALUES (2, manager2, 11AA)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, user.getuid());
+            preparedStatement.setInt(1, user.getuid());
             preparedStatement.setString(2, user.getusername());
             preparedStatement.setString(3, user.getpassword());
             preparedStatement.executeUpdate();

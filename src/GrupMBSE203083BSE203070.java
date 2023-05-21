@@ -1,15 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-package grup.m.bse203083.bse203070;
-
-import java.awt.Color;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 public class GrupMBSE203083BSE203070 extends JFrame {
-
-
 private JTextField usernameField;
-    private JPasswordField passwordField;
+private JPasswordField passwordField;
 
     public GrupMBSE203083BSE203070() {
         initializeUI();
@@ -84,7 +88,6 @@ private JTextField usernameField;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
             public void run() {
                GrupMBSE203083BSE203070 loginGUI = new GrupMBSE203083BSE203070();
                 loginGUI.setVisible(true);
@@ -93,7 +96,11 @@ private JTextField usernameField;
     }
 }
 
-class AdminFunctionPageGUI extends JFrame implements ActionListener {
+class AdminFunctionPageGUI extends JFrame {
+private JList<String> bookList;
+    private DefaultListModel<String> listModel;
+public BiookDoa bookDAO;
+public Userrdoa userDAO;
     public AdminFunctionPageGUI() {
         setTitle("Admin Function Page");
         JLabel tf = new JLabel("Admin functions ");
@@ -101,27 +108,35 @@ class AdminFunctionPageGUI extends JFrame implements ActionListener {
         
         setSize(600, 500);
         JButton bt = new JButton("View book");
+        
         bt.setBounds(110, 140, 100, 30);
         bt.setBackground(Color.GRAY);
         JButton bt1 = new JButton("view user");
+         
         bt1.setBounds(220, 140, 100, 30);
         bt1.setBackground(Color.GRAY);
         JButton bt2 = new JButton("view issue book");
+         
         bt2.setBounds(330, 140, 100, 30);
         bt2.setBackground(Color.GRAY);
          JButton bt3 = new JButton("issue book");
+          
         bt3.setBounds(440, 140, 100, 30);
         bt3.setBackground(Color.GRAY);
          JButton bt4 = new JButton("add user");
+          
         bt4.setBounds(110, 200, 100, 30);
         bt4.setBackground(Color.GRAY);
         JButton bt5 = new JButton("add book");
+         
         bt5.setBounds(220, 200, 100, 30);
         bt5.setBackground(Color.GRAY);
         JButton bt6 = new JButton("return book");
+         
         bt6.setBounds(330, 200, 100, 30);
         bt6.setBackground(Color.GRAY);
         JButton bt7 = new JButton("create/reset");
+          
         bt7.setBounds(440, 200, 100, 30);
         bt7.setBackground(Color.GRAY);
         setLayout(null);
@@ -136,9 +151,8 @@ class AdminFunctionPageGUI extends JFrame implements ActionListener {
         add(bt7);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
+ 
     }
+
     
 }
-
-   

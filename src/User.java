@@ -18,8 +18,8 @@ this.uid=uid;
 this.username=username;
 this.password=password;
 }
-public int getud() {
-        return id;
+public int getuid() {
+        return uid;
     }
     public String getusername() {
         return username;

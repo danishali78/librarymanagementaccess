@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author HP
- */
+import java.util.ArrayList;
+import java.util.List;
 public interface BiookDoa {
 List<Book> ViewBooks();
-    Book returnbook(int bookId);
+    void returnbook(int bookId);
     void addBook(Book book);
     void issuebook(int bookId);
-void List<Book> getIssuedBooks();
+ List<Book> getIssuedBooks();
 }

@@ -7,23 +7,22 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.swing.*;
 public class Bookdaoimpl implements BiookDoa{
 private Connection connection;
 
-    public BookdaoImpl() {
+    public Bookdaoimpl() {
         try {
             String url = "jdbc:mysql://localhost:3306/library";
             String username = "root";
             String password = "";
-             Class.forName("com.mysqlcj.jdbc.Driver")
+           
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-public List<Book> viewBooks() {
+public List<Book> ViewBooks() {
         List<Book> books = new ArrayList<>();
 
         try {
@@ -50,9 +49,9 @@ public List<Book> viewBooks() {
     }
  public void addBook(Book book) {
         try {
-            String query = "INSERT INTO books (id,title,  genre,price) VALUES (1, "b", "AA","200RS")";
+            String query = "INSERT INTO books (id,title,  genre,price,issued) VALUES (2, data science, data,2000RS,false)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, book.getId());
+            preparedStatement.setInt(1, book.getId());
             preparedStatement.setString(2, book.getTitle());
             preparedStatement.setString(3, book.getgenre());
             preparedStatement.setString(4, book.getprice());
@@ -73,8 +72,8 @@ public List<Book> viewBooks() {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String title = resultSet.getString("title");
-                String author = resultSet.getString("genre");
-                String isbn = resultSet.getString("price");
+                String genre = resultSet.getString("genre");
+                String price = resultSet.getString("price");
 
                 Book book = new Book(id, title, genre, price);
                 issuedBooks.add(book);

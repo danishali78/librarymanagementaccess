@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author HP
- */
+import java.util.ArrayList;
+import java.util.List;
 public interface Userrdoa {
 List<User> getalluser();
  void adduser(User user);
