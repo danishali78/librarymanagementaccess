@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author HP
- */
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.swing.*;
 public class Bookdaoimpl implements BiookDoa{
 private Connection connection;
 
     public BookdaoImpl() {
         try {
             String url = "jdbc:mysql://localhost:3306/library";
-            String username = "your_username";
-            String password = "your_password";
+            String username = "root";
+            String password = "";
+             Class.forName("com.mysqlcj.jdbc.Driver")
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();

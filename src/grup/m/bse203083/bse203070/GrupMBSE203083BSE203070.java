@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package grup.m.bse203083.bse203070;
 
 import java.awt.Color;
@@ -44,8 +40,6 @@ private JTextField usernameField;
           loginButton.addActionListener(e -> {
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
-
-            // Perform login validation here
             if (username.equals("manager") && password.equals("123")) {
                 JOptionPane.showMessageDialog(panel, "Login successful!");
             } else {
@@ -70,7 +64,7 @@ private JTextField usernameField;
         panel.add(usernameField);
         panel.add(passwordLabel);
         panel.add(passwordField);
-        panel.add(new JLabel()); // Empty label for layout purposes
+        panel.add(new JLabel()); 
         panel.add(loginButton);
 
         add(panel);
@@ -83,11 +77,8 @@ private JTextField usernameField;
     }
 
     private void openAdminFunctionPage() {
-        // Create and show the admin function page GUI
         AdminFunctionPageGUI adminGUI = new AdminFunctionPageGUI();
         adminGUI.setVisible(true);
-
-        // Close the login GUI
         dispose();
     }
 
@@ -102,7 +93,7 @@ private JTextField usernameField;
     }
 }
 
-class AdminFunctionPageGUI extends JFrame {
+class AdminFunctionPageGUI extends JFrame implements ActionListener {
     public AdminFunctionPageGUI() {
         setTitle("Admin Function Page");
         JLabel tf = new JLabel("Admin functions ");
@@ -145,6 +136,7 @@ class AdminFunctionPageGUI extends JFrame {
         add(bt7);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
     }
     
 }
