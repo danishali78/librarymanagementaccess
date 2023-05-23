@@ -13,11 +13,13 @@ private int id;
     private String title;
     private String genre;
      private String price;
-     public Book(int id, String title, String genre,String price) {
+private boolean issued;
+     public Book(int id, String title, String genre,String price,boolean issued) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.price = price;
+       this.issued=issued;
     }
   public int getId() {
         return id;
@@ -32,6 +34,9 @@ private int id;
     }
     public String getprice() {
         return price;
+    }
+    public boolean getissued() {
+        return issued;
     }
 }
 

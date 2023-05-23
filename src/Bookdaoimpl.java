@@ -34,8 +34,8 @@ public List<Book> ViewBooks() {
                 String title = resultSet.getString("title");
                 String genre = resultSet.getString("genre");
                 String price = resultSet.getString("price");
-
-                Book book = new Book(id, title, genre, price);
+                 boolean b1=resultSet.getBoolean("issued");
+                Book book = new Book(id, title, genre, price,b1);
                 books.add(book);
             }
 
@@ -49,12 +49,13 @@ public List<Book> ViewBooks() {
     }
  public void addBook(Book book) {
         try {
-            String query = "INSERT INTO books (id,title,  genre,price,issued) VALUES (2, data science, data,2000RS,false)";
+            String query = "INSERT INTO books (id,title,  genre,price,issued) VALUES (?, ?, ?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, book.getId());
             preparedStatement.setString(2, book.getTitle());
             preparedStatement.setString(3, book.getgenre());
             preparedStatement.setString(4, book.getprice());
+             preparedStatement.setBoolean(5, book.getissued());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
@@ -74,8 +75,8 @@ public List<Book> ViewBooks() {
                 String title = resultSet.getString("title");
                 String genre = resultSet.getString("genre");
                 String price = resultSet.getString("price");
-
-                Book book = new Book(id, title, genre, price);
+               boolean b1=resultSet.getBoolean("issued");
+                Book book = new Book(id, title, genre, price,b1);
                 issuedBooks.add(book);
             }
 
@@ -89,7 +90,7 @@ public List<Book> ViewBooks() {
     }
    public void issuebook(int bookId) {
         try {
-            String query = "UPDATE books SET issued = true WHERE id = 1";
+            String query = "UPDATE books SET issued = true WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, bookId);
             preparedStatement.executeUpdate();
@@ -101,7 +102,7 @@ public List<Book> ViewBooks() {
     }
     public void returnbook(int bookId) {
         try {
-            String query = "UPDATE books SET issued = false WHERE id = 1";
+            String query = "UPDATE books SET issued = false WHERE id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, bookId);
             preparedStatement.executeUpdate();

@@ -167,8 +167,10 @@ int id=Integer.parseInt(id1);
         String title = JOptionPane.showInputDialog(AdminFunctionPageGUI.this, "Enter book title:", "Add Book", JOptionPane.PLAIN_MESSAGE);
         String genre = JOptionPane.showInputDialog(AdminFunctionPageGUI.this, "Enter book genre:", "Add Book", JOptionPane.PLAIN_MESSAGE);
         String price = JOptionPane.showInputDialog(AdminFunctionPageGUI.this, "Enter book price:", "Add Book", JOptionPane.PLAIN_MESSAGE);
+         String s1 = JOptionPane.showInputDialog(AdminFunctionPageGUI.this, "issued or not :", "Add Book", JOptionPane.PLAIN_MESSAGE);
         int id=Integer.parseInt(id1);
-            Book book = new Book(id,title, genre, price);
+         boolean b1=Boolean.parseBoolean(s1); 
+            Book book = new Book(id,title, genre, price,b1);
             addBook(book);
         
     }

@@ -26,11 +26,11 @@ public List<User> getalluser() {
         List<User> users = new ArrayList<>();
 
         try {
-            String query = "SELECT * FROM User";
+            String query = "SELECT * FROM user";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("uid");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
 
@@ -47,7 +47,7 @@ return users;
 }
 public void adduser(User user) {
         try {
-            String query = "INSERT INTO User (id,username,  password) VALUES (2, manager2, 11AA)";
+            String query = "INSERT INTO User (uid,username,  password) VALUES ( ?,?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, user.getuid());
             preparedStatement.setString(2, user.getusername());
